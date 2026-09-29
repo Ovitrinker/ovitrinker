@@ -7,4 +7,4 @@ I build things — mostly with AI as my pair programmer.
 - 🖨️ **3D printing** — co-owner of 3DVisionStore
 - 📐 Currently training as a *Konstrukteur EFZ* (mechanical design engineer)
 
-📍 Winterthur, Switzerland
+📍 Zürich, Switzerland
