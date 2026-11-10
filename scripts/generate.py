@@ -147,6 +147,7 @@ def cut(s, n):
     return s if len(s) <= n else s[: n - 1] + "…"
 
 # ---- terminal.svg ------------------------------------------------------------
+FAVICON = '<rect x="0" y="0" width="3" height="1" fill="#77563e"/><rect x="3" y="0" width="1" height="1" fill="#654a35"/><rect x="4" y="0" width="3" height="1" fill="#77563e"/><rect x="7" y="0" width="1" height="1" fill="#654a35"/><rect x="0" y="1" width="1" height="1" fill="#ff5014"/><rect x="1" y="1" width="2" height="1" fill="#ff4c0f"/><rect x="3" y="1" width="1" height="1" fill="#ff581f"/><rect x="4" y="1" width="1" height="1" fill="#ff541a"/><rect x="5" y="1" width="1" height="1" fill="#ff4505"/><rect x="6" y="1" width="1" height="1" fill="#ff541a"/><rect x="7" y="1" width="1" height="1" fill="#ff5c24"/><rect x="0" y="2" width="1" height="1" fill="#ff6733"/><rect x="1" y="2" width="1" height="1" fill="#ff5f29"/><rect x="2" y="2" width="1" height="1" fill="#ff5c24"/><rect x="3" y="2" width="1" height="1" fill="#ff4c0f"/><rect x="4" y="2" width="1" height="1" fill="#ff6733"/><rect x="5" y="2" width="1" height="1" fill="#ff5f29"/><rect x="6" y="2" width="1" height="1" fill="#ff6733"/><rect x="7" y="2" width="1" height="1" fill="#ff5c24"/><rect x="0" y="3" width="1" height="1" fill="#654a35"/><rect x="1" y="3" width="3" height="1" fill="#543e2c"/><rect x="4" y="3" width="1" height="1" fill="#654a35"/><rect x="5" y="3" width="3" height="1" fill="#543e2c"/><rect x="0" y="4" width="1" height="1" fill="#77563e"/><rect x="1" y="4" width="2" height="1" fill="#ffffff"/><rect x="3" y="4" width="1" height="1" fill="#654a35"/><rect x="4" y="4" width="1" height="1" fill="#77563e"/><rect x="5" y="4" width="2" height="1" fill="#ffffff"/><rect x="7" y="4" width="1" height="1" fill="#654a35"/><rect x="0" y="5" width="1" height="1" fill="#77563e"/><rect x="1" y="5" width="1" height="1" fill="#ffffff"/><rect x="2" y="5" width="1" height="1" fill="#000000"/><rect x="3" y="5" width="1" height="1" fill="#543e2c"/><rect x="4" y="5" width="1" height="1" fill="#77563e"/><rect x="5" y="5" width="1" height="1" fill="#000000"/><rect x="6" y="5" width="1" height="1" fill="#ffffff"/><rect x="7" y="5" width="1" height="1" fill="#543e2c"/><rect x="0" y="6" width="1" height="1" fill="#77563e"/><rect x="1" y="6" width="2" height="1" fill="#654a35"/><rect x="3" y="6" width="2" height="1" fill="#000000"/><rect x="5" y="6" width="2" height="1" fill="#654a35"/><rect x="7" y="6" width="1" height="1" fill="#543e2c"/><rect x="0" y="7" width="1" height="1" fill="#654a35"/><rect x="1" y="7" width="2" height="1" fill="#543e2c"/><rect x="3" y="7" width="1" height="1" fill="#000000"/><rect x="4" y="7" width="1" height="1" fill="#fb2600"/><rect x="5" y="7" width="3" height="1" fill="#543e2c"/>'
 LOGO = [
  " ██████  ██    ██ ██ ",
  "██    ██ ██    ██ ██ ",
@@ -172,11 +173,8 @@ def build_terminal(d):
     s.frame("ovitrinker@mainframe: ~", "bash")
     s.body.append(s.typed(20, 66, 18, 300, prompt(20, 66, "fastfetch"), 0.1, 0.7))
     t0 = 0.9
-    y = 190
-    for i, line in enumerate(LOGO):
-        s.body.append(s.fade(f'<text x="60" y="{y}" font-size="20" fill="{FG}" xml:space="preserve">{escape(line)}</text>', t0 + i*0.1, "0.2s"))
-        y += 22
-    s.body.append(s.fade(f'<text x="60" y="{y+14}" font-size="13" fill="{MUTE}">Build things. Ship them.</text>', t0 + 0.9))
+    s.body.append(s.fade(f'<g transform="translate(70 130) scale(20)" shape-rendering="crispEdges">{FAVICON}</g>', t0, "0.6s"))
+    s.body.append(s.fade(f'<text x="150" y="320" font-size="13" fill="{MUTE}" text-anchor="middle">Build things. Ship them.</text>', t0 + 0.6))
     IX, FSZ, y, LH2 = 520, 13, 112, 21
     streak_n = streak(d["days"])
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
